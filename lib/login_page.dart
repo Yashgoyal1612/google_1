@@ -24,82 +24,88 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Colors.white,
           body: Form(
             key: _formkey,
-            child: SingleChildScrollView(
+            child: ListView(
               // ignore: prefer_const_literals_to_create_immutables
-              child: Column(children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.only(left: 35, top: 100),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold),
+              children: [
+                Column(children: [
+                  Container(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.only(left: 35, top: 100),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                // Image.asset(
-                //   "assets/images/login_image.png",
-                //   fit: BoxFit.cover,
-                // ),
+                  // Image.asset(
+                  //   "assets/images/login_image.png",
+                  //   fit: BoxFit.cover,
+                  // ),
 
-                SizedBox(
-                  height: 20.0,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 16.0, horizontal: 32.0),
-                  child: Column(children: [
-                    TextFormField(
-                      validator: (String? value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter Username';
-                        }
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.people),
-                        hintText: "Enter Username",
-                        labelText: "Student Name",
-                        // labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 32.0),
+                    child: Column(children: [
+                      TextFormField(
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter Username';
+                          }
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.people),
+                          hintText: "Enter Username",
+                          labelText: "Student Name",
+                          // labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      validator: (String? value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter Email ID';
-                        }
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email),
-                        hintText: "Enter Email ID",
-                        labelText: "Email ID",
-                        // labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    SizedBox(
-                      height: 40.0,
-                    ),
-                    ElevatedButton(
-                      child: Text("Login"),
-                      style: TextButton.styleFrom(minimumSize: Size(320, 40)),
-                      onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.FinalRoute);
-                        // print("Heloo World");
-                      },
-                    ),
-                  ]),
-                )
-              ]),
+                      TextFormField(
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter Email ID';
+                          }
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          hintText: "Enter Email ID",
+                          labelText: "Email ID",
+                          // labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40.0,
+                      ),
+                      ElevatedButton(
+                        child: Text("Login"),
+                        style: TextButton.styleFrom(minimumSize: Size(320, 40)),
+                        onPressed: () {
+                          setState(() {
+                            if (_formkey.currentState!.validate()) {
+                              Navigator.pushNamed(context, MyRoutes.FinalRoute);
+                            }
+                          });
+                          // print("Heloo World");
+                        },
+                      ),
+                    ]),
+                  )
+                ]),
+              ],
             ),
           )),
     );
